@@ -4,7 +4,6 @@
 
 ## Features
 
-- Laravel 8
 - Vue + VueRouter + Vuex + VueI18n + ESlint+ vue-sweetalert2
 - Pages with dynamic import and custom layouts
 - Login, register, simple crud
