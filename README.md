@@ -1,5 +1,6 @@
 # Vue 2 SPA using API (vuex + vue-router + axios + vue-cli)
 > Vue SPA starter project template using Lumen API.
+> Lumen backend api repo : `https://github.com/jasimjuwel/Laravel-Lumen-JWT-authentication-and-CRUD`
 
 ## Features
 
@@ -13,7 +14,7 @@
 ## Installation
 
 - Edit `axios.js` and set api base endpoints `axios.defaults.baseURL = 'http://localhost:8000/api';`
-- (When installed via git clone or download, run `php artisan key:generate` and `php artisan jwt:secret`)
+- (When installed via git clone or download, run `npm install`)
 - `npm install`
 
 ## Usage
