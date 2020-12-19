@@ -33,8 +33,7 @@
                   <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">Confirm
                     Password</label>
                   <div class="col-md-6">
-                    <input type="password" id="password_confirmation" class="form-control"
-                           v-model="password_confirmation">
+                    <input type="password" id="password_confirmation" class="form-control" v-model="password_confirmation">
                   </div>
                 </div>
 
@@ -74,7 +73,6 @@ export default {
   },
   methods: {
     async handleSubmit() {
-
       try {
         const response = await axios.post('register', {
           name: this.name,
@@ -87,7 +85,6 @@ export default {
       } catch (e) {
         this.error = 'Error occured';
       }
-
     }
   }
 }

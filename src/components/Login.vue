@@ -6,7 +6,7 @@
           <div class="card">
             <div class="card-header">Login</div>
             <div class="card-body">
-              <Error v-if="error" :error="error" />
+              <error v-if="error" :error="error" />
               <form @submit.prevent="handleSubmit">
                 <div class="form-group row">
                   <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
@@ -26,7 +26,6 @@
                   <button type="submit" class="btn btn-primary">
                     Login
                   </button>
-<!--                  <a href="#" class="btn btn-link"> Forgot Your Password? </a>-->
                 </div>
               </form>
             </div>
@@ -40,13 +39,11 @@
 
 <script>
 import axios from 'axios'
-import Error from "./Error"
+import Error from "@/components/Error";
 
 export default {
   name: 'Login',
-  component: {
-    Error
-  },
+  components: {Error},
 
   data() {
     return {

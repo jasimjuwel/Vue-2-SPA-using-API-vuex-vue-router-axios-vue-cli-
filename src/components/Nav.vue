@@ -26,6 +26,9 @@
             </div>
           </li>-->
           <li class="nav-item">
+            <a class="nav-link" href="javascript:void(0)">Hi {{ user.name }}</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="javascript:void(0)" @click="handleClick">Logout</a>
           </li>
         </ul>

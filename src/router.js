@@ -20,18 +20,25 @@ export default new Router({
         },
         {
             path: '/register',
-            component: Register
+            component: Register,
         },
         {
             path: '/product-create',
             name: 'product-create',
             // lazy-loaded
-            component: () => import('./components/ProductCreate.vue')
+            component: () => import('./components/ProductCreate.vue'),
+            meta: {
+                auth: true
+            },
         }, {
             path: '/product-edit/:id',
             name: 'product-edit',
             // lazy-loaded
-            component: () => import('./components/ProductEdit.vue')
+            component: () => import('./components/ProductEdit.vue'),
+            meta: {
+                auth: true
+            },
         }
     ]
 });
+

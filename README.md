@@ -1,5 +1,6 @@
 # Vue 2 SPA using API (vuex + vue-router + axios + vue-cli)
-> Vue SPA starter project template using Lumen API.
+> Vue SPA starter project template using Laravel Lumen API.
+
 > Lumen backend api repo : `https://github.com/jasimjuwel/Laravel-Lumen-JWT-authentication-and-CRUD`
 
 ## Features
@@ -34,6 +35,12 @@ npm run build
 ```
 npm run lint
 ```
+## Instruction:
+*  `Specify which port run this project in package.json`
+
+         "serve": "vue-cli-service serve --port 3000",
+
+
 ## Note:
 
 I tried to follow the best practices, but any suggestion, modification is highly appreciated.

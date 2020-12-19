@@ -1,12 +1,12 @@
 <template>
   <main class="py-4">
-    <div class="container">
+    <div class="container" v-if="!user">
       <div class="row justify-content-center">
         <div class="col-md-10">
           <div class="card">
             <div class="card-header">Dashboard</div>
             <div class="card-body">
-              <h3 v-if="user">Hi {{ user.name }}</h3>
+<!--              <h3 v-if="user">Hi {{ user.name }}</h3>-->
               <h3 v-if="!user">You are not logged in</h3>
             </div>
           </div>
@@ -18,12 +18,16 @@
       <div class="row justify-content-center">
         <div class="col-md-10">
           <div class="card">
-            <div class="card-header">Product List
-              <router-link class="btn btn-info " to="/product-create">Product Create</router-link>
+            <div class="card-header">
+              <h3 class="header-title mt-0 mb-4">
+                Product List
+                <router-link class="btn btn-info btn-sm waves-effect waves-light px-4 d-inline-block float-right mr-3" to="/product-create">Add</router-link>
+              </h3>
+
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table">
+                <table class="table table table-bordered">
                   <thead>
                   <tr>
                     <th>#SL</th>
@@ -44,9 +48,9 @@
                     <td><img :src="value.image_path" class="imageSize"></td>
                     <td>{{ value.created_at }}</td>
                     <td>
-                      <router-link class="btn btn-success" :to="{name:'product-edit',params:{id:value.id} }">Product Edit</router-link>
-                      <a class="btn btn-danger" @click="deleteProduct(value.id)">Product Delete</a>
-                      <button v-on:click="showAlertConfirm">Confirm Me</button>
+                      <router-link class="btn btn-success btn-sm" :to="{name:'product-edit',params:{id:value.id} }">Edit</router-link>&nbsp
+                      <a class="btn btn-danger btn-sm" @click="deleteProduct(value.id)">Delete</a>
+<!--                      <button v-on:click="showAlertConfirm">Confirm Me</button>-->
                     </td>
                   </tr>
                   </tbody>
@@ -77,7 +81,10 @@ export default {
   methods: {
     async deleteProduct(id) {
       try {
-        const response = await axios.delete('products-delete/' + id);
+        const response = await axios.delete(`products-delete/${id}`)
+
+          let i = this.productList.map(item => item.id).indexOf(id); // find index of your object
+          this.productList.splice(i, 1)
 
         console.log(response);
       } catch (e) {

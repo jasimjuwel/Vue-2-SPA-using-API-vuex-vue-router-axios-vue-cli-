@@ -4,9 +4,11 @@
       <div class="row justify-content-center">
         <div class="col-md-6">
           <div class="card">
-            <div class="card-header">Product Create</div>
+            <div class="card-header">
+              <h3>Product Create</h3>
+            </div>
             <div class="card-body">
-              <error v-if="error" :error="error" />
+              <error v-if="error" :error="error"/>
               <form @submit.prevent="handleSubmit">
                 <div class="form-group row">
                   <label for="title" class="col-md-4 col-form-label text-md-right">Title</label>
@@ -30,9 +32,9 @@
                 </div>
 
                 <div class="form-group row">
-                  <label for="image" class="col-md-4 col-form-label text-md-right">Image</label>
+                  <label for="file" class="col-md-4 col-form-label text-md-right">Image</label>
                   <div class="col-md-6">
-                    <input type="file" id="image" class="form-control">
+                    <input type="file" class="form-control" id="file" ref="file" @change="onChangeFileUpload()" accept="image/*">
                   </div>
                 </div>
 
@@ -70,19 +72,23 @@ export default {
   methods: {
     async handleSubmit() {
 
+      let formData = new FormData();
+      formData.append('image', this.file);
+      formData.append('title', this.title);
+      formData.append('description', this.description);
+      formData.append('price', this.price);
       try {
-        const response = await axios.post('products-save', {
-          title: this.title,
-          description: this.description,
-          price: this.price,
-          image: this.image,
-        })
+        const response = await axios.post('products-save', formData)
 
         this.$router.push('/');
         console.log(response);
-      }catch (e){
-        this.error = 'Invalid username/password !';
+      } catch (e) {
+        this.error = 'Something error happend !';
       }
+    },
+
+    onChangeFileUpload() {
+      this.file = this.$refs.file.files[0];
     }
   }
 }
