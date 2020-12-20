@@ -21,11 +21,7 @@ export default {
 
 
   async created() {
-    const response = await axios.get('profile'/*, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token')
-      }
-    }*/);
+    const response = await axios.get('profile');
     this.$store.dispatch('user',response.data.data);
     console.log(response)
   }

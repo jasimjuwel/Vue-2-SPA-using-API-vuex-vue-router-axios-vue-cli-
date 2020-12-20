@@ -6,7 +6,6 @@
           <div class="card">
             <div class="card-header">Dashboard</div>
             <div class="card-body">
-<!--              <h3 v-if="user">Hi {{ user.name }}</h3>-->
               <h3 v-if="!user">You are not logged in</h3>
             </div>
           </div>
@@ -48,9 +47,8 @@
                     <td><img :src="value.image_path" class="imageSize"></td>
                     <td>{{ value.created_at }}</td>
                     <td>
-                      <router-link class="btn btn-success btn-sm" :to="{name:'product-edit',params:{id:value.id} }">Edit</router-link>&nbsp
+                      <router-link class="btn btn-success btn-sm" :to="{name:'product-edit',params:{id:value.id} }">Edit</router-link>
                       <a class="btn btn-danger btn-sm" @click="deleteProduct(value.id)">Delete</a>
-<!--                      <button v-on:click="showAlertConfirm">Confirm Me</button>-->
                     </td>
                   </tr>
                   </tbody>
@@ -62,8 +60,6 @@
       </div>
     </div>
   </main>
-
-
 </template>
 
 <script>
@@ -83,60 +79,14 @@ export default {
       try {
         const response = await axios.delete(`products-delete/${id}`)
 
-          let i = this.productList.map(item => item.id).indexOf(id); // find index of your object
+          let i = this.productList.map(item => item.id).indexOf(id);
           this.productList.splice(i, 1)
 
         console.log(response);
       } catch (e) {
         console.log(e);
       }
-    },
-
-    showAlert(){
-
-      this.$swal('Hello Vue world!!!');
-
-    },
-
-    showAlertConfirm(){
-
-      this.$swal({
-
-        title: 'Are you sure?',
-
-        text: "You won't be able to revert this!",
-
-        type: 'warning',
-
-        showCancelButton: true,
-
-        confirmButtonColor: '#3085d6',
-
-        cancelButtonColor: '#d33',
-
-        confirmButtonText: 'Yes, delete it!'
-
-      }).then((result) => {
-
-        if (result.value) {
-
-          this.$swal(
-
-              'Deleted!',
-
-              'Your file has been deleted.',
-
-              'success'
-
-          )
-
-        }
-
-      });
-
     }
-
-
   },
 
   async created() {

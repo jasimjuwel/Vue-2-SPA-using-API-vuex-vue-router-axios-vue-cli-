@@ -79,10 +79,8 @@ export default {
       formData.append('image', this.file);
       try {
         const response = await axios.put(`products-update/${this.$route.params.id}`, this.form)
-        //await axios.put(`products-update/${this.$route.params.id}`, formData)
 
         this.$router.push('/');
-
         console.log(response);
       } catch (e) {
         this.error = 'Something error found !';
@@ -94,9 +92,7 @@ export default {
   },
 
   async created() {
-
     const response = await axios.get(`products-edit/${this.$route.params.id}`);
-
     this.form = response.data.data;
     console.log(response)
   },

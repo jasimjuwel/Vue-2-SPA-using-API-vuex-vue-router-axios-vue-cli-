@@ -17,14 +17,6 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto" v-if="user">
-<!--          <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-              {{ user.name }} <span class="caret"></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="javascript:void(0)" @click="handleClick">Logout</a>
-            </div>
-          </li>-->
           <li class="nav-item">
             <a class="nav-link" href="javascript:void(0)">Hi {{ user.name }}</a>
           </li>
