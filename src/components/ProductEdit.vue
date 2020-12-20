@@ -73,12 +73,21 @@ export default {
     }
   },
   methods: {
+
+    onChangeFileUpload() {
+      this.file = this.$refs.file.files[0];
+    },
     async handleSubmit() {
 
       let formData = new FormData();
       formData.append('image', this.file);
+      formData.append('title', this.form.title);
+      formData.append('description', this.form.description);
+      formData.append('price', this.form.price);
+      formData.append('_method', 'PUT')
+
       try {
-        const response = await axios.put(`products-update/${this.$route.params.id}`, this.form)
+        const response = await axios.post(`products-update/${this.$route.params.id}`, formData)
 
         this.$router.push('/');
         console.log(response);
@@ -86,9 +95,6 @@ export default {
         this.error = 'Something error found !';
       }
     }
-  },
-  onChangeFileUpload() {
-    this.file = this.$refs.file.files[0];
   },
 
   async created() {
