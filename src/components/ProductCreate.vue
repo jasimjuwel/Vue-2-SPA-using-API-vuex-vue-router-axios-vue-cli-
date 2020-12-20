@@ -13,21 +13,21 @@
                 <div class="form-group row">
                   <label for="title" class="col-md-4 col-form-label text-md-right">Title</label>
                   <div class="col-md-6">
-                    <input type="text" id="title" class="form-control" v-model="title">
+                    <input type="text" id="title" class="form-control" v-model="form.title">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
                   <div class="col-md-6">
-                    <input type="text" id="description" class="form-control" v-model="description">
+                    <input type="text" id="description" class="form-control" v-model="form.description">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="price" class="col-md-4 col-form-label text-md-right">Price</label>
                   <div class="col-md-6">
-                    <input type="text" id="price" class="form-control" v-model="price">
+                    <input type="text" id="price" class="form-control" v-model="form.price">
                   </div>
                 </div>
 
@@ -62,10 +62,12 @@ export default {
 
   data() {
     return {
-      title: '',
-      description: '',
-      price: '',
-      image: '',
+      form: {
+        title: '',
+        description: '',
+        price: '',
+        image: '',
+      },
       error: '',
     }
   },
@@ -74,9 +76,9 @@ export default {
 
       let formData = new FormData();
       formData.append('image', this.file);
-      formData.append('title', this.title);
-      formData.append('description', this.description);
-      formData.append('price', this.price);
+      formData.append('title', this.form.title);
+      formData.append('description', this.form.description);
+      formData.append('price', this.form.price);
       try {
         const response = await axios.post('products-save', formData)
 

@@ -73,7 +73,6 @@ export default {
     }
   },
   methods: {
-
     onChangeFileUpload() {
       this.file = this.$refs.file.files[0];
     },
@@ -102,8 +101,6 @@ export default {
     this.form = response.data.data;
     console.log(response)
   },
-
-
 }
 
 </script>
